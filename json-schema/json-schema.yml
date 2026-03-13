@@ -1,0 +1,140 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://raw.githubusercontent.com/api-evangelist/google-cloud-error-reporting/refs/heads/main/json-schema/json-schema.yml
+title: Google Cloud Error Reporting Schema
+description: Schema defining the core resources of the Google Cloud Error Reporting API.
+type: object
+properties:
+  errorEvent:
+    $ref: '#/$defs/ErrorEvent'
+  errorGroup:
+    $ref: '#/$defs/ErrorGroup'
+  errorGroupStats:
+    $ref: '#/$defs/ErrorGroupStats'
+$defs:
+  ErrorEvent:
+    type: object
+    title: Error Event
+    description: An individual error event with message, context, and service information.
+    properties:
+      eventTime:
+        type: string
+        format: date-time
+        description: The time the event was received.
+      serviceContext:
+        $ref: '#/$defs/ServiceContext'
+      message:
+        type: string
+        description: The error message and stack trace.
+      context:
+        $ref: '#/$defs/ErrorContext'
+    required:
+      - serviceContext
+      - message
+  ServiceContext:
+    type: object
+    title: Service Context
+    description: Describes the running service that sends error reports.
+    properties:
+      service:
+        type: string
+        description: The name of the service.
+      version:
+        type: string
+        description: The version of the service.
+      resourceType:
+        type: string
+        description: Type of the resource reporting the error.
+    required:
+      - service
+  ErrorContext:
+    type: object
+    title: Error Context
+    description: Contextual information about where the error occurred.
+    properties:
+      httpRequest:
+        type: object
+        properties:
+          method:
+            type: string
+          url:
+            type: string
+          userAgent:
+            type: string
+          referrer:
+            type: string
+          responseStatusCode:
+            type: integer
+          remoteIp:
+            type: string
+      user:
+        type: string
+        description: The user who caused or experienced the error.
+      reportLocation:
+        type: object
+        properties:
+          filePath:
+            type: string
+          lineNumber:
+            type: integer
+          functionName:
+            type: string
+  ErrorGroup:
+    type: object
+    title: Error Group
+    description: A group of related error events.
+    properties:
+      name:
+        type: string
+        description: The resource name of the error group.
+      groupId:
+        type: string
+        description: The unique group identifier.
+      trackingIssues:
+        type: array
+        items:
+          type: object
+          properties:
+            url:
+              type: string
+      resolutionStatus:
+        type: string
+        description: The current resolution status of the group.
+        enum:
+          - OPEN
+          - ACKNOWLEDGED
+          - RESOLVED
+          - MUTED
+    required:
+      - name
+      - groupId
+  ErrorGroupStats:
+    type: object
+    title: Error Group Stats
+    description: Statistics for an error group over a time period.
+    properties:
+      group:
+        $ref: '#/$defs/ErrorGroup'
+      count:
+        type: string
+        description: Approximate total number of events in the group.
+      affectedUsersCount:
+        type: string
+        description: Approximate number of affected users.
+      firstSeenTime:
+        type: string
+        format: date-time
+        description: When the error was first seen.
+      lastSeenTime:
+        type: string
+        format: date-time
+        description: When the error was last seen.
+      affectedServices:
+        type: array
+        items:
+          $ref: '#/$defs/ServiceContext'
+      numAffectedServices:
+        type: integer
+        description: Number of services affected by the error.
+    required:
+      - group
+      - count

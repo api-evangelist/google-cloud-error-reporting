@@ -1,0 +1,327 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Error Reporting API
+  description: >-
+    The Error Reporting API enables listing error events, retrieving error
+    group statistics, reporting new errors, and managing error groups. It
+    groups and counts similar errors from cloud services and applications and
+    provides programmatic access to error data and statistics.
+  version: v1beta1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/error-reporting
+externalDocs:
+  description: Google Cloud Error Reporting Documentation
+  url: https://cloud.google.com/error-reporting/docs
+servers:
+  - url: https://clouderrorreporting.googleapis.com
+paths:
+  /v1beta1/projects/{projectId}/events:
+    get:
+      operationId: listEvents
+      summary: List Error Events
+      description: Lists the specified events.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: groupId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The group for which events are returned.
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEventsResponse'
+  /v1beta1/projects/{projectId}/events:report:
+    post:
+      operationId: reportEvent
+      summary: Report Error Event
+      description: Reports an individual error event.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportedErrorEvent'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportErrorEventResponse'
+  /v1beta1/projects/{projectId}/groupStats:
+    get:
+      operationId: listGroupStats
+      summary: List Group Stats
+      description: Lists the specified groups with error count statistics.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: timeRange.period
+          in: query
+          schema:
+            type: string
+            enum:
+              - PERIOD_1_HOUR
+              - PERIOD_6_HOURS
+              - PERIOD_1_DAY
+              - PERIOD_1_WEEK
+              - PERIOD_30_DAYS
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGroupStatsResponse'
+  /v1beta1/projects/{projectId}/groups/{groupId}:
+    get:
+      operationId: getGroup
+      summary: Get Error Group
+      description: Gets the specified error group.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorGroup'
+    put:
+      operationId: updateGroup
+      summary: Update Error Group
+      description: Replaces the data for the specified group.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorGroup'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorGroup'
+  /v1beta1/projects/{projectId}/events:deleteAll:
+    delete:
+      operationId: deleteEvents
+      summary: Delete All Events
+      description: Deletes all error events for the specified project.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+components:
+  schemas:
+    ErrorEvent:
+      type: object
+      description: An individual error event.
+      properties:
+        eventTime:
+          type: string
+          format: date-time
+          description: The time the event was received.
+        serviceContext:
+          $ref: '#/components/schemas/ServiceContext'
+        message:
+          type: string
+          description: The error message and stack trace.
+        context:
+          $ref: '#/components/schemas/ErrorContext'
+    ReportedErrorEvent:
+      type: object
+      description: An error event reported by the application.
+      properties:
+        eventTime:
+          type: string
+          format: date-time
+        serviceContext:
+          $ref: '#/components/schemas/ServiceContext'
+        message:
+          type: string
+          description: The error message including stack trace.
+        context:
+          $ref: '#/components/schemas/ErrorContext'
+      required:
+        - serviceContext
+        - message
+    ServiceContext:
+      type: object
+      description: Describes a running service that sends error reports.
+      properties:
+        service:
+          type: string
+          description: The name of the service.
+        version:
+          type: string
+          description: The version of the service.
+        resourceType:
+          type: string
+          description: Type of the resource reporting the error.
+    ErrorContext:
+      type: object
+      description: Contextual information about the error.
+      properties:
+        httpRequest:
+          type: object
+          properties:
+            method:
+              type: string
+            url:
+              type: string
+            userAgent:
+              type: string
+            referrer:
+              type: string
+            responseStatusCode:
+              type: integer
+            remoteIp:
+              type: string
+        user:
+          type: string
+          description: The user who caused the error.
+        reportLocation:
+          type: object
+          properties:
+            filePath:
+              type: string
+            lineNumber:
+              type: integer
+            functionName:
+              type: string
+    ErrorGroup:
+      type: object
+      description: A group of related error events.
+      properties:
+        name:
+          type: string
+        groupId:
+          type: string
+        trackingIssues:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+        resolutionStatus:
+          type: string
+          enum:
+            - OPEN
+            - ACKNOWLEDGED
+            - RESOLVED
+            - MUTED
+    ErrorGroupStats:
+      type: object
+      description: Statistics for an error group.
+      properties:
+        group:
+          $ref: '#/components/schemas/ErrorGroup'
+        count:
+          type: string
+          description: Approximate total number of events in the group.
+        affectedUsersCount:
+          type: string
+        firstSeenTime:
+          type: string
+          format: date-time
+        lastSeenTime:
+          type: string
+          format: date-time
+        affectedServices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceContext'
+        numAffectedServices:
+          type: integer
+        representative:
+          $ref: '#/components/schemas/ErrorEvent'
+    ReportErrorEventResponse:
+      type: object
+      description: Response for reporting an error event.
+    ListEventsResponse:
+      type: object
+      properties:
+        errorEvents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorEvent'
+        nextPageToken:
+          type: string
+        timeRangeBegin:
+          type: string
+          format: date-time
+    ListGroupStatsResponse:
+      type: object
+      properties:
+        errorGroupStats:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorGroupStats'
+        nextPageToken:
+          type: string
+        timeRangeBegin:
+          type: string
+          format: date-time
