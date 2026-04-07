@@ -13,13 +13,13 @@ modified: '2026-03-16'
 specificationVersion: '0.19'
 type: Index
 tags:
-  - Errors
-  - Error Reporting
-  - Exceptions
   - Debugging
-  - Reliability
-  - Observability
+  - Error Reporting
+  - Errors
+  - Exceptions
   - Google Cloud
+  - Observability
+  - Reliability
 apis:
   - name: Google Cloud Error Reporting API
     description: >-

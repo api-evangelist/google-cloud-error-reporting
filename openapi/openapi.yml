@@ -48,6 +48,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListEventsResponse'
+      tags:
+        - V1beta1
   /v1beta1/projects/{projectId}/events:report:
     post:
       operationId: reportEvent
@@ -72,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReportErrorEventResponse'
+      tags:
+        - V1beta1
   /v1beta1/projects/{projectId}/groupStats:
     get:
       operationId: listGroupStats
@@ -108,6 +112,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListGroupStatsResponse'
+      tags:
+        - V1beta1
   /v1beta1/projects/{projectId}/groups/{groupId}:
     get:
       operationId: getGroup
@@ -131,6 +137,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorGroup'
+      tags:
+        - V1beta1
     put:
       operationId: updateGroup
       summary: Google Cloud Error Reporting Update Error Group
@@ -159,6 +167,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorGroup'
+      tags:
+        - V1beta1
   /v1beta1/projects/{projectId}/events:deleteAll:
     delete:
       operationId: deleteEvents
@@ -173,6 +183,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - V1beta1
 components:
   schemas:
     ErrorEvent:
@@ -325,3 +337,5 @@ components:
         timeRangeBegin:
           type: string
           format: date-time
+tags:
+  - name: V1beta1
