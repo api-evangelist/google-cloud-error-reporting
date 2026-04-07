@@ -19,7 +19,7 @@ paths:
   /v1beta1/projects/{projectId}/events:
     get:
       operationId: listEvents
-      summary: List Error Events
+      summary: Google Cloud Error Reporting List Error Events
       description: Lists the specified events.
       parameters:
         - name: projectId
@@ -51,7 +51,7 @@ paths:
   /v1beta1/projects/{projectId}/events:report:
     post:
       operationId: reportEvent
-      summary: Report Error Event
+      summary: Google Cloud Error Reporting Report Error Event
       description: Reports an individual error event.
       parameters:
         - name: projectId
@@ -75,7 +75,7 @@ paths:
   /v1beta1/projects/{projectId}/groupStats:
     get:
       operationId: listGroupStats
-      summary: List Group Stats
+      summary: Google Cloud Error Reporting List Group Stats
       description: Lists the specified groups with error count statistics.
       parameters:
         - name: projectId
@@ -111,7 +111,7 @@ paths:
   /v1beta1/projects/{projectId}/groups/{groupId}:
     get:
       operationId: getGroup
-      summary: Get Error Group
+      summary: Google Cloud Error Reporting Get Error Group
       description: Gets the specified error group.
       parameters:
         - name: projectId
@@ -133,7 +133,7 @@ paths:
                 $ref: '#/components/schemas/ErrorGroup'
     put:
       operationId: updateGroup
-      summary: Update Error Group
+      summary: Google Cloud Error Reporting Update Error Group
       description: Replaces the data for the specified group.
       parameters:
         - name: projectId
@@ -162,7 +162,7 @@ paths:
   /v1beta1/projects/{projectId}/events:deleteAll:
     delete:
       operationId: deleteEvents
-      summary: Delete All Events
+      summary: Google Cloud Error Reporting Delete All Events
       description: Deletes all error events for the specified project.
       parameters:
         - name: projectId
