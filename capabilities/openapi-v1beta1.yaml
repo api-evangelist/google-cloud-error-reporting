@@ -1,30 +1,35 @@
 naftiko: 1.0.0-alpha2
 info:
-  label: Google Cloud Error Reporting API
-  description: The Error Reporting API enables listing error events, retrieving error group statistics, reporting new errors,
-    and managing error groups. It groups and counts similar errors from cloud services and applications and provides programmatic
-    access to error data and statistics.
+  label: Google Cloud Error Reporting API — V1beta1
+  description: 'Google Cloud Error Reporting API — V1beta1. 6 operations. Lead operation: Google Cloud Error Reporting List
+    Error Events. Self-contained Naftiko capability covering one Google Cloud Error Reporting business surface.'
   tags:
-  - Google
-  - Cloud
-  - Error
-  - Reporting
-  - API
-  created: '2026-05-06'
-  modified: '2026-05-06'
+  - Google Cloud Error Reporting
+  - V1beta1
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_ERROR_REPORTING_API_KEY: GOOGLE_CLOUD_ERROR_REPORTING_API_KEY
 capability:
   consumes:
   - type: http
-    namespace: google-cloud-error-reporting
+    namespace: openapi-v1beta1
     baseUri: https://clouderrorreporting.googleapis.com
-    description: Google Cloud Error Reporting API HTTP API.
+    description: Google Cloud Error Reporting API — V1beta1 business capability. Self-contained, no shared references.
     resources:
-    - name: v1beta1-projects-projectid-events
+    - name: v1beta1-projects-projectId-events
       path: /v1beta1/projects/{projectId}/events
       operations:
       - name: listevents
         method: GET
         description: Google Cloud Error Reporting List Error Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
         inputParameters:
         - name: projectId
           in: path
@@ -33,41 +38,62 @@ capability:
         - name: groupId
           in: query
           type: string
-          required: true
           description: The group for which events are returned.
+          required: true
         - name: pageSize
           in: query
           type: integer
         - name: pageToken
           in: query
           type: string
+    - name: v1beta1-projects-projectId-events:deleteAll
+      path: /v1beta1/projects/{projectId}/events:deleteAll
+      operations:
+      - name: deleteevents
+        method: DELETE
+        description: Google Cloud Error Reporting Delete All Events
         outputRawFormat: json
         outputParameters:
         - name: result
           type: object
           value: $.
-    - name: v1beta1-projects-projectid-events-report
-      path: /v1beta1/projects/{projectId}/events:report
-      operations:
-      - name: reportevent
-        method: POST
-        description: Google Cloud Error Reporting Report Error Event
         inputParameters:
         - name: projectId
           in: path
           type: string
           required: true
+    - name: v1beta1-projects-projectId-events:report
+      path: /v1beta1/projects/{projectId}/events:report
+      operations:
+      - name: reportevent
+        method: POST
+        description: Google Cloud Error Reporting Report Error Event
         outputRawFormat: json
         outputParameters:
         - name: result
           type: object
           value: $.
-    - name: v1beta1-projects-projectid-groupstats
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1beta1-projects-projectId-groupStats
       path: /v1beta1/projects/{projectId}/groupStats
       operations:
       - name: listgroupstats
         method: GET
         description: Google Cloud Error Reporting List Group Stats
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
         inputParameters:
         - name: projectId
           in: path
@@ -82,17 +108,17 @@ capability:
         - name: pageToken
           in: query
           type: string
-        outputRawFormat: json
-        outputParameters:
-        - name: result
-          type: object
-          value: $.
-    - name: v1beta1-projects-projectid-groups-groupid
+    - name: v1beta1-projects-projectId-groups-groupId
       path: /v1beta1/projects/{projectId}/groups/{groupId}
       operations:
       - name: getgroup
         method: GET
         description: Google Cloud Error Reporting Get Error Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
         inputParameters:
         - name: projectId
           in: path
@@ -102,14 +128,14 @@ capability:
           in: path
           type: string
           required: true
-        outputRawFormat: json
-        outputParameters:
-        - name: result
-          type: object
-          value: $.
       - name: updategroup
         method: PUT
         description: Google Cloud Error Reporting Update Error Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
         inputParameters:
         - name: projectId
           in: path
@@ -119,247 +145,188 @@ capability:
           in: path
           type: string
           required: true
-        outputRawFormat: json
-        outputParameters:
-        - name: result
+        - name: body
+          in: body
           type: object
-          value: $.
-    - name: v1beta1-projects-projectid-events-deleteall
-      path: /v1beta1/projects/{projectId}/events:deleteAll
-      operations:
-      - name: deleteevents
-        method: DELETE
-        description: Google Cloud Error Reporting Delete All Events
-        inputParameters:
-        - name: projectId
-          in: path
-          type: string
+          description: Request body (JSON).
           required: true
-        outputRawFormat: json
-        outputParameters:
-        - name: result
-          type: object
-          value: $.
   exposes:
   - type: rest
+    namespace: openapi-v1beta1-rest
     port: 8080
-    namespace: google-cloud-error-reporting-rest
-    description: REST adapter for Google Cloud Error Reporting API.
+    description: REST adapter for Google Cloud Error Reporting API — V1beta1. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
     resources:
-    - path: /v1beta1/projects/{projectId}/events
-      name: listevents
+    - path: /v1/v1beta1/projects/{projectid}/events
+      name: v1beta1-projects-projectid-events
+      description: REST surface for v1beta1-projects-projectId-events.
       operations:
       - method: GET
         name: listevents
         description: Google Cloud Error Reporting List Error Events
-        call: google-cloud-error-reporting.listevents
-        with:
-          projectId: rest.projectId
-        outputParameters:
-        - type: object
-          mapping: $.
-    - path: /v1beta1/projects/{projectId}/events:report
-      name: reportevent
-      operations:
-      - method: POST
-        name: reportevent
-        description: Google Cloud Error Reporting Report Error Event
-        call: google-cloud-error-reporting.reportevent
-        with:
-          projectId: rest.projectId
-        outputParameters:
-        - type: object
-          mapping: $.
-    - path: /v1beta1/projects/{projectId}/groupStats
-      name: listgroupstats
-      operations:
-      - method: GET
-        name: listgroupstats
-        description: Google Cloud Error Reporting List Group Stats
-        call: google-cloud-error-reporting.listgroupstats
-        with:
-          projectId: rest.projectId
-        outputParameters:
-        - type: object
-          mapping: $.
-    - path: /v1beta1/projects/{projectId}/groups/{groupId}
-      name: getgroup
-      operations:
-      - method: GET
-        name: getgroup
-        description: Google Cloud Error Reporting Get Error Group
-        call: google-cloud-error-reporting.getgroup
+        call: openapi-v1beta1.listevents
         with:
           projectId: rest.projectId
           groupId: rest.groupId
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
         outputParameters:
         - type: object
           mapping: $.
-    - path: /v1beta1/projects/{projectId}/groups/{groupId}
-      name: updategroup
-      operations:
-      - method: PUT
-        name: updategroup
-        description: Google Cloud Error Reporting Update Error Group
-        call: google-cloud-error-reporting.updategroup
-        with:
-          projectId: rest.projectId
-          groupId: rest.groupId
-        outputParameters:
-        - type: object
-          mapping: $.
-    - path: /v1beta1/projects/{projectId}/events:deleteAll
-      name: deleteevents
+    - path: /v1/v1beta1/projects/{projectid}/events-deleteall
+      name: v1beta1-projects-projectid-events-deleteall
+      description: REST surface for v1beta1-projects-projectId-events:deleteAll.
       operations:
       - method: DELETE
         name: deleteevents
         description: Google Cloud Error Reporting Delete All Events
-        call: google-cloud-error-reporting.deleteevents
+        call: openapi-v1beta1.deleteevents
         with:
           projectId: rest.projectId
         outputParameters:
         - type: object
           mapping: $.
+    - path: /v1/v1beta1/projects/{projectid}/events-report
+      name: v1beta1-projects-projectid-events-report
+      description: REST surface for v1beta1-projects-projectId-events:report.
+      operations:
+      - method: POST
+        name: reportevent
+        description: Google Cloud Error Reporting Report Error Event
+        call: openapi-v1beta1.reportevent
+        with:
+          projectId: rest.projectId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1beta1/projects/{projectid}/groupstats
+      name: v1beta1-projects-projectid-groupstats
+      description: REST surface for v1beta1-projects-projectId-groupStats.
+      operations:
+      - method: GET
+        name: listgroupstats
+        description: Google Cloud Error Reporting List Group Stats
+        call: openapi-v1beta1.listgroupstats
+        with:
+          projectId: rest.projectId
+          timeRange.period: rest.timeRange.period
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1beta1/projects/{projectid}/groups/{groupid}
+      name: v1beta1-projects-projectid-groups-groupid
+      description: REST surface for v1beta1-projects-projectId-groups-groupId.
+      operations:
+      - method: GET
+        name: getgroup
+        description: Google Cloud Error Reporting Get Error Group
+        call: openapi-v1beta1.getgroup
+        with:
+          projectId: rest.projectId
+          groupId: rest.groupId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updategroup
+        description: Google Cloud Error Reporting Update Error Group
+        call: openapi-v1beta1.updategroup
+        with:
+          projectId: rest.projectId
+          groupId: rest.groupId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
   - type: mcp
+    namespace: openapi-v1beta1-mcp
     port: 9090
-    namespace: google-cloud-error-reporting-mcp
     transport: http
-    description: MCP adapter for Google Cloud Error Reporting API for AI agent use.
+    description: MCP adapter for Google Cloud Error Reporting API — V1beta1. One tool per consumed operation, routed inline
+      through this capability's consumes block.
     tools:
-    - name: listevents
+    - name: google-cloud-error-reporting-list
       description: Google Cloud Error Reporting List Error Events
       hints:
         readOnly: true
         destructive: false
         idempotent: true
-      call: google-cloud-error-reporting.listevents
+      call: openapi-v1beta1.listevents
       with:
         projectId: tools.projectId
         groupId: tools.groupId
         pageSize: tools.pageSize
         pageToken: tools.pageToken
-      inputParameters:
-      - name: projectId
-        type: string
-        description: projectId
-        required: true
-      - name: groupId
-        type: string
-        description: The group for which events are returned.
-        required: true
-      - name: pageSize
-        type: integer
-        description: pageSize
-      - name: pageToken
-        type: string
-        description: pageToken
       outputParameters:
       - type: object
         mapping: $.
-    - name: reportevent
-      description: Google Cloud Error Reporting Report Error Event
-      hints:
-        readOnly: false
-        destructive: false
-        idempotent: false
-      call: google-cloud-error-reporting.reportevent
-      with:
-        projectId: tools.projectId
-      inputParameters:
-      - name: projectId
-        type: string
-        description: projectId
-        required: true
-      outputParameters:
-      - type: object
-        mapping: $.
-    - name: listgroupstats
-      description: Google Cloud Error Reporting List Group Stats
-      hints:
-        readOnly: true
-        destructive: false
-        idempotent: true
-      call: google-cloud-error-reporting.listgroupstats
-      with:
-        projectId: tools.projectId
-        timeRange.period: tools.timeRange.period
-        pageSize: tools.pageSize
-        pageToken: tools.pageToken
-      inputParameters:
-      - name: projectId
-        type: string
-        description: projectId
-        required: true
-      - name: timeRange.period
-        type: string
-        description: timeRange.period
-      - name: pageSize
-        type: integer
-        description: pageSize
-      - name: pageToken
-        type: string
-        description: pageToken
-      outputParameters:
-      - type: object
-        mapping: $.
-    - name: getgroup
-      description: Google Cloud Error Reporting Get Error Group
-      hints:
-        readOnly: true
-        destructive: false
-        idempotent: true
-      call: google-cloud-error-reporting.getgroup
-      with:
-        projectId: tools.projectId
-        groupId: tools.groupId
-      inputParameters:
-      - name: projectId
-        type: string
-        description: projectId
-        required: true
-      - name: groupId
-        type: string
-        description: groupId
-        required: true
-      outputParameters:
-      - type: object
-        mapping: $.
-    - name: updategroup
-      description: Google Cloud Error Reporting Update Error Group
-      hints:
-        readOnly: false
-        destructive: false
-        idempotent: true
-      call: google-cloud-error-reporting.updategroup
-      with:
-        projectId: tools.projectId
-        groupId: tools.groupId
-      inputParameters:
-      - name: projectId
-        type: string
-        description: projectId
-        required: true
-      - name: groupId
-        type: string
-        description: groupId
-        required: true
-      outputParameters:
-      - type: object
-        mapping: $.
-    - name: deleteevents
+    - name: google-cloud-error-reporting-delete
       description: Google Cloud Error Reporting Delete All Events
       hints:
         readOnly: false
         destructive: true
         idempotent: true
-      call: google-cloud-error-reporting.deleteevents
+      call: openapi-v1beta1.deleteevents
       with:
         projectId: tools.projectId
-      inputParameters:
-      - name: projectId
-        type: string
-        description: projectId
-        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-error-reporting-report
+      description: Google Cloud Error Reporting Report Error Event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openapi-v1beta1.reportevent
+      with:
+        projectId: tools.projectId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-error-reporting-list-2
+      description: Google Cloud Error Reporting List Group Stats
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-v1beta1.listgroupstats
+      with:
+        projectId: tools.projectId
+        timeRange.period: tools.timeRange.period
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-error-reporting-get
+      description: Google Cloud Error Reporting Get Error Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-v1beta1.getgroup
+      with:
+        projectId: tools.projectId
+        groupId: tools.groupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-error-reporting-update
+      description: Google Cloud Error Reporting Update Error Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: openapi-v1beta1.updategroup
+      with:
+        projectId: tools.projectId
+        groupId: tools.groupId
+        body: tools.body
       outputParameters:
       - type: object
         mapping: $.
