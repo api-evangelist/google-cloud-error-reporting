@@ -10,60 +10,62 @@ modified: '2026-05-19'
 specificationVersion: '0.19'
 type: Index
 tags:
-- Debugging
-- Error Reporting
-- Errors
-- Exceptions
-- Google Cloud
-- Observability
-- Reliability
+  - Debugging
+  - Error Reporting
+  - Errors
+  - Exceptions
+  - Google Cloud
+  - Observability
+  - Reliability
 apis:
-- name: Google Cloud Error Reporting API
-  description: The Error Reporting API enables listing error events, retrieving error group statistics, reporting new errors,
-    and managing error groups. It groups and counts similar errors from cloud services and applications and provides programmatic
-    access to error data and statistics.
-  humanURL: https://cloud.google.com/error-reporting/docs
-  baseURL: https://clouderrorreporting.googleapis.com
-  properties:
-  - type: Documentation
-    url: https://cloud.google.com/error-reporting/docs/reference/rest
-  - type: OpenAPI
-    url: openapi/openapi.yml
-  - type: Authentication
-    url: https://cloud.google.com/docs/authentication
+  - name: Google Cloud Error Reporting API
+    description: The Error Reporting API enables listing error events, retrieving error group statistics, reporting new errors,
+      and managing error groups. It groups and counts similar errors from cloud services and applications and provides programmatic
+      access to error data and statistics.
+    humanURL: https://cloud.google.com/error-reporting/docs
+    baseURL: https://clouderrorreporting.googleapis.com
+    properties:
+    - type: Documentation
+      url: https://cloud.google.com/error-reporting/docs/reference/rest
+    - type: OpenAPI
+      url: openapi/openapi.yml
+    - type: Authentication
+      url: https://cloud.google.com/docs/authentication
+    - type: GettingStarted
+      url: https://cloud.google.com/error-reporting/docs/setup/overview
+    - type: JSONSchema
+      url: json-schema/json-schema.yml
+    - type: JSONLDContext
+      url: json-ld/json-ld.yml
+    - type: NaftikoCapability
+      url: capabilities/openapi-v1beta1.yaml
+common:
+  - type: GitHubOrganization
+    url: https://github.com/googleapis
+  - type: Portal
+    url: https://cloud.google.com/error-reporting
   - type: GettingStarted
     url: https://cloud.google.com/error-reporting/docs/setup/overview
-  - type: JSONSchema
-    url: json-schema/json-schema.yml
+  - type: Documentation
+    url: https://cloud.google.com/error-reporting/docs
+  - type: Authentication
+    url: https://cloud.google.com/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/error-reporting/pricing
+  - type: TermsOfService
+    url: https://cloud.google.com/terms
+  - type: PrivacyPolicy
+    url: https://policies.google.com/privacy
+  - type: StatusPage
+    url: https://status.cloud.google.com/
+  - type: Support
+    url: https://cloud.google.com/error-reporting/docs/support
   - type: JSONLDContext
     url: json-ld/json-ld.yml
-  - type: NaftikoCapability
-    url: capabilities/openapi-v1beta1.yaml
-common:
-- type: Portal
-  url: https://cloud.google.com/error-reporting
-- type: GettingStarted
-  url: https://cloud.google.com/error-reporting/docs/setup/overview
-- type: Documentation
-  url: https://cloud.google.com/error-reporting/docs
-- type: Authentication
-  url: https://cloud.google.com/docs/authentication
-- type: Pricing
-  url: https://cloud.google.com/error-reporting/pricing
-- type: TermsOfService
-  url: https://cloud.google.com/terms
-- type: PrivacyPolicy
-  url: https://policies.google.com/privacy
-- type: StatusPage
-  url: https://status.cloud.google.com/
-- type: Support
-  url: https://cloud.google.com/error-reporting/docs/support
-- type: JSONLDContext
-  url: json-ld/json-ld.yml
-- type: Integrations
-  url: https://cloud.google.com/marketplace
+  - type: Integrations
+    url: https://cloud.google.com/marketplace
 integrations:
-- name: Become a Partner
+  - name: Become a Partner
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
