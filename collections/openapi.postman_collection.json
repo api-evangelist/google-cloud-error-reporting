@@ -1,0 +1,705 @@
+{
+  "item": [
+    {
+      "id": "d8cc02bb-0fb0-43e3-abad-4743ef1436ee",
+      "name": "V1beta1",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2ba57c1c-9fc7-4aa1-b097-d705b5298ebc",
+          "name": "Google Cloud Error Reporting List Error Events",
+          "request": {
+            "name": "Google Cloud Error Reporting List Error Events",
+            "description": {
+              "content": "Lists the specified events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta1",
+                "projects",
+                ":projectId",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "groupId",
+                  "value": "<string>",
+                  "description": "(Required) The group for which events are returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d521c15-46e8-4257-8bbf-202550d1c6d6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta1",
+                    "projects",
+                    ":projectId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorEvents\": [\n    {\n      \"eventTime\": \"1990-10-29T17:42:54.078Z\",\n      \"serviceContext\": {\n        \"service\": \"string\",\n        \"version\": \"string\",\n        \"resourceType\": \"string\"\n      },\n      \"message\": \"string\",\n      \"context\": {\n        \"httpRequest\": {\n          \"method\": \"string\",\n          \"url\": \"string\",\n          \"userAgent\": \"string\",\n          \"referrer\": \"string\",\n          \"responseStatusCode\": 1664,\n          \"remoteIp\": \"string\"\n        },\n        \"user\": \"string\",\n        \"reportLocation\": {\n          \"filePath\": \"string\",\n          \"lineNumber\": 716,\n          \"functionName\": \"string\"\n        }\n      }\n    },\n    {\n      \"eventTime\": \"2023-05-18T01:47:40.170Z\",\n      \"serviceContext\": {\n        \"service\": \"string\",\n        \"version\": \"string\",\n        \"resourceType\": \"string\"\n      },\n      \"message\": \"string\",\n      \"context\": {\n        \"httpRequest\": {\n          \"method\": \"string\",\n          \"url\": \"string\",\n          \"userAgent\": \"string\",\n          \"referrer\": \"string\",\n          \"responseStatusCode\": 930,\n          \"remoteIp\": \"string\"\n        },\n        \"user\": \"string\",\n        \"reportLocation\": {\n          \"filePath\": \"string\",\n          \"lineNumber\": 8449,\n          \"functionName\": \"string\"\n        }\n      }\n    }\n  ],\n  \"nextPageToken\": \"string\",\n  \"timeRangeBegin\": \"1995-03-25T21:32:18.807Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c794624-494a-4c45-8986-8d8ee73ef7ab",
+          "name": "Google Cloud Error Reporting Report Error Event",
+          "request": {
+            "name": "Google Cloud Error Reporting Report Error Event",
+            "description": {
+              "content": "Reports an individual error event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta1",
+                "projects",
+                ":projectId",
+                "events:report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serviceContext\": {\n    \"service\": \"<string>\",\n    \"version\": \"<string>\",\n    \"resourceType\": \"<string>\"\n  },\n  \"message\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"context\": {\n    \"httpRequest\": {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"userAgent\": \"<string>\",\n      \"referrer\": \"<string>\",\n      \"responseStatusCode\": \"<integer>\",\n      \"remoteIp\": \"<string>\"\n    },\n    \"user\": \"<string>\",\n    \"reportLocation\": {\n      \"filePath\": \"<string>\",\n      \"lineNumber\": \"<integer>\",\n      \"functionName\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ce5f30c-f855-4f09-9f4d-6134de99b597",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta1",
+                    "projects",
+                    ":projectId",
+                    "events:report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serviceContext\": {\n    \"service\": \"string\",\n    \"version\": \"string\",\n    \"resourceType\": \"string\"\n  },\n  \"message\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"context\": {\n    \"httpRequest\": {\n      \"method\": \"string\",\n      \"url\": \"string\",\n      \"userAgent\": \"string\",\n      \"referrer\": \"string\",\n      \"responseStatusCode\": 297,\n      \"remoteIp\": \"string\"\n    },\n    \"user\": \"string\",\n    \"reportLocation\": {\n      \"filePath\": \"string\",\n      \"lineNumber\": 2284,\n      \"functionName\": \"string\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bcd0fc9e-2adc-418c-b913-c23e01c6d6e3",
+          "name": "Google Cloud Error Reporting List Group Stats",
+          "request": {
+            "name": "Google Cloud Error Reporting List Group Stats",
+            "description": {
+              "content": "Lists the specified groups with error count statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta1",
+                "projects",
+                ":projectId",
+                "groupStats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timeRange.period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c86d560d-0395-40af-b1e7-05731e56361d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta1",
+                    "projects",
+                    ":projectId",
+                    "groupStats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRange.period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorGroupStats\": [\n    {\n      \"group\": {\n        \"name\": \"string\",\n        \"groupId\": \"string\",\n        \"trackingIssues\": [\n          {\n            \"url\": \"string\"\n          },\n          {\n            \"url\": \"string\"\n          }\n        ],\n        \"resolutionStatus\": \"MUTED\"\n      },\n      \"count\": \"string\",\n      \"affectedUsersCount\": \"string\",\n      \"firstSeenTime\": \"1985-07-22T05:12:15.407Z\",\n      \"lastSeenTime\": \"1995-08-12T03:59:36.109Z\",\n      \"affectedServices\": [\n        {\n          \"service\": \"string\",\n          \"version\": \"string\",\n          \"resourceType\": \"string\"\n        },\n        {\n          \"service\": \"string\",\n          \"version\": \"string\",\n          \"resourceType\": \"string\"\n        }\n      ],\n      \"numAffectedServices\": 2215,\n      \"representative\": {\n        \"eventTime\": \"1989-07-08T20:42:25.179Z\",\n        \"serviceContext\": {\n          \"service\": \"string\",\n          \"version\": \"string\",\n          \"resourceType\": \"string\"\n        },\n        \"message\": \"string\",\n        \"context\": {\n          \"httpRequest\": {\n            \"method\": \"string\",\n            \"url\": \"string\",\n            \"userAgent\": \"string\",\n            \"referrer\": \"string\",\n            \"responseStatusCode\": 4580,\n            \"remoteIp\": \"string\"\n          },\n          \"user\": \"string\",\n          \"reportLocation\": {\n            \"filePath\": \"string\",\n            \"lineNumber\": 3303,\n            \"functionName\": \"string\"\n          }\n        }\n      }\n    },\n    {\n      \"group\": {\n        \"name\": \"string\",\n        \"groupId\": \"string\",\n        \"trackingIssues\": [\n          {\n            \"url\": \"string\"\n          },\n          {\n            \"url\": \"string\"\n          }\n        ],\n        \"resolutionStatus\": \"RESOLVED\"\n      },\n      \"count\": \"string\",\n      \"affectedUsersCount\": \"string\",\n      \"firstSeenTime\": \"1957-03-20T10:22:56.467Z\",\n      \"lastSeenTime\": \"1961-09-04T21:36:33.357Z\",\n      \"affectedServices\": [\n        {\n          \"service\": \"string\",\n          \"version\": \"string\",\n          \"resourceType\": \"string\"\n        },\n        {\n          \"service\": \"string\",\n          \"version\": \"string\",\n          \"resourceType\": \"string\"\n        }\n      ],\n      \"numAffectedServices\": 1029,\n      \"representative\": {\n        \"eventTime\": \"1971-01-01T11:45:37.645Z\",\n        \"serviceContext\": {\n          \"service\": \"string\",\n          \"version\": \"string\",\n          \"resourceType\": \"string\"\n        },\n        \"message\": \"string\",\n        \"context\": {\n          \"httpRequest\": {\n            \"method\": \"string\",\n            \"url\": \"string\",\n            \"userAgent\": \"string\",\n            \"referrer\": \"string\",\n            \"responseStatusCode\": 3136,\n            \"remoteIp\": \"string\"\n          },\n          \"user\": \"string\",\n          \"reportLocation\": {\n            \"filePath\": \"string\",\n            \"lineNumber\": 410,\n            \"functionName\": \"string\"\n          }\n        }\n      }\n    }\n  ],\n  \"nextPageToken\": \"string\",\n  \"timeRangeBegin\": \"1974-02-02T08:54:01.985Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11bb0097-b12b-4e61-8869-62214cd2adbf",
+          "name": "Google Cloud Error Reporting Get Error Group",
+          "request": {
+            "name": "Google Cloud Error Reporting Get Error Group",
+            "description": {
+              "content": "Gets the specified error group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta1",
+                "projects",
+                ":projectId",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6cfb18b4-aca3-4822-acb2-a5bc39fe8edb",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta1",
+                    "projects",
+                    ":projectId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"groupId\": \"string\",\n  \"trackingIssues\": [\n    {\n      \"url\": \"string\"\n    },\n    {\n      \"url\": \"string\"\n    }\n  ],\n  \"resolutionStatus\": \"RESOLVED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67423086-df50-4046-9920-7257cc6a4205",
+          "name": "Google Cloud Error Reporting Update Error Group",
+          "request": {
+            "name": "Google Cloud Error Reporting Update Error Group",
+            "description": {
+              "content": "Replaces the data for the specified group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta1",
+                "projects",
+                ":projectId",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"trackingIssues\": [\n    {\n      \"url\": \"<string>\"\n    },\n    {\n      \"url\": \"<string>\"\n    }\n  ],\n  \"resolutionStatus\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35698509-d738-4afc-91a0-8e0dc548ceff",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta1",
+                    "projects",
+                    ":projectId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"trackingIssues\": [\n    {\n      \"url\": \"<string>\"\n    },\n    {\n      \"url\": \"<string>\"\n    }\n  ],\n  \"resolutionStatus\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"groupId\": \"string\",\n  \"trackingIssues\": [\n    {\n      \"url\": \"string\"\n    },\n    {\n      \"url\": \"string\"\n    }\n  ],\n  \"resolutionStatus\": \"RESOLVED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ccff055-be12-4c40-b317-9d618980d19b",
+          "name": "Google Cloud Error Reporting Delete All Events",
+          "request": {
+            "name": "Google Cloud Error Reporting Delete All Events",
+            "description": {
+              "content": "Deletes all error events for the specified project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta1",
+                "projects",
+                ":projectId",
+                "events:deleteAll"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74c3b858-7c50-4571-9a39-008855a8b8e2",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta1",
+                    "projects",
+                    ":projectId",
+                    "events:deleteAll"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://clouderrorreporting.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f2404ea4-986e-4620-b2b3-d3fdb3a0c025",
+    "name": "Google Cloud Error Reporting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Error Reporting API enables listing error events, retrieving error group statistics, reporting new errors, and managing error groups. It groups and counts similar errors from cloud services and applications and provides programmatic access to error data and statistics.\n\nContact Support:\n Name: Google Cloud",
+      "type": "text/plain"
+    }
+  }
+}
