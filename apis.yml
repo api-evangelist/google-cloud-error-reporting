@@ -4,7 +4,7 @@ description: >-
   Google Cloud Error Reporting groups and counts similar errors from cloud services and applications, reports new
   errors, and provides access to error groups and statistics. It automatically analyzes exceptions and displays them in
   a centralized interface with alerting, helping developers quickly identify and fix reliability issues in production.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-error-reporting/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
