@@ -40,6 +40,10 @@ apis:
       - type: JSONLDContext
         url: json-ld/json-ld.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-cloud-error-reporting-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-cloud-error-reporting-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/googleapis
   - type: Portal
