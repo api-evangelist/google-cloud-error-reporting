@@ -1,0 +1,744 @@
+{
+  "info": {
+    "_postman_id": "093fa569-3207-46ab-8ade-3cecb07a8374",
+    "name": "Google Cloud Error Reporting V1beta1 API",
+    "description": "The Error Reporting API enables listing error events, retrieving error group statistics, reporting new errors, and managing error groups. It groups and counts similar errors from cloud services and applications and provides programmatic access to error data and statistics.\n\nContact Support:\n Name: Google Cloud",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:47:31.000Z",
+    "updatedAt": "2026-07-28T01:47:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-093fa569-3207-46ab-8ade-3cecb07a8374"
+  },
+  "item": [
+    {
+      "name": "v1beta1",
+      "item": [
+        {
+          "name": "projects",
+          "item": [
+            {
+              "name": "{projectId}",
+              "item": [
+                {
+                  "name": "events",
+                  "item": [
+                    {
+                      "name": "Google Cloud Error Reporting List Error Events",
+                      "id": "6ad0d763-b1b3-4816-ae68-02e19b7dcc61",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta1/projects/:projectId/events?groupId=<string>&pageSize=<integer>&pageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta1",
+                            "projects",
+                            ":projectId",
+                            "events"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The group for which events are returned.",
+                              "key": "groupId",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "pageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "pageToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "dfd741c8-3160-46ee-8cbd-3e1f17e38a0c",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Lists the specified events."
+                      },
+                      "response": [
+                        {
+                          "id": "d3d38957-7286-4400-a515-5d6c98945843",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta1/projects/:projectId/events?groupId=<string>&pageSize=<integer>&pageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta1",
+                                "projects",
+                                ":projectId",
+                                "events"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The group for which events are returned.",
+                                  "key": "groupId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "pageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorEvents\": [\n    {\n      \"eventTime\": \"<dateTime>\",\n      \"serviceContext\": {\n        \"service\": \"<string>\",\n        \"version\": \"<string>\",\n        \"resourceType\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"context\": {\n        \"httpRequest\": {\n          \"method\": \"<string>\",\n          \"url\": \"<string>\",\n          \"userAgent\": \"<string>\",\n          \"referrer\": \"<string>\",\n          \"responseStatusCode\": \"<integer>\",\n          \"remoteIp\": \"<string>\"\n        },\n        \"user\": \"<string>\",\n        \"reportLocation\": {\n          \"filePath\": \"<string>\",\n          \"lineNumber\": \"<integer>\",\n          \"functionName\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"eventTime\": \"<dateTime>\",\n      \"serviceContext\": {\n        \"service\": \"<string>\",\n        \"version\": \"<string>\",\n        \"resourceType\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"context\": {\n        \"httpRequest\": {\n          \"method\": \"<string>\",\n          \"url\": \"<string>\",\n          \"userAgent\": \"<string>\",\n          \"referrer\": \"<string>\",\n          \"responseStatusCode\": \"<integer>\",\n          \"remoteIp\": \"<string>\"\n        },\n        \"user\": \"<string>\",\n        \"reportLocation\": {\n          \"filePath\": \"<string>\",\n          \"lineNumber\": \"<integer>\",\n          \"functionName\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"timeRangeBegin\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T01:47:32.000Z",
+                          "updatedAt": "2026-07-28T01:47:32.000Z",
+                          "uid": "35240-d3d38957-7286-4400-a515-5d6c98945843"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:47:32.000Z",
+                      "updatedAt": "2026-07-28T01:47:32.000Z",
+                      "uid": "35240-6ad0d763-b1b3-4816-ae68-02e19b7dcc61"
+                    }
+                  ],
+                  "id": "60311d1c-c78f-4b08-a953-993e6d8e156f",
+                  "createdAt": "2026-07-28T01:47:32.000Z",
+                  "updatedAt": "2026-07-28T01:47:32.000Z",
+                  "uid": "35240-60311d1c-c78f-4b08-a953-993e6d8e156f"
+                },
+                {
+                  "name": "events:report",
+                  "item": [
+                    {
+                      "name": "Google Cloud Error Reporting Report Error Event",
+                      "id": "59eb2e7e-0768-483b-a12a-9d66094ca58a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"serviceContext\": {\n    \"service\": \"<string>\",\n    \"version\": \"<string>\",\n    \"resourceType\": \"<string>\"\n  },\n  \"message\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"context\": {\n    \"httpRequest\": {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"userAgent\": \"<string>\",\n      \"referrer\": \"<string>\",\n      \"responseStatusCode\": \"<integer>\",\n      \"remoteIp\": \"<string>\"\n    },\n    \"user\": \"<string>\",\n    \"reportLocation\": {\n      \"filePath\": \"<string>\",\n      \"lineNumber\": \"<integer>\",\n      \"functionName\": \"<string>\"\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta1/projects/:projectId/events:report",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta1",
+                            "projects",
+                            ":projectId",
+                            "events:report"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0f783a03-f860-4d4b-8570-862c08f30257",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Reports an individual error event."
+                      },
+                      "response": [
+                        {
+                          "id": "1e55797e-4e0f-426c-9ed9-a07755746e11",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"serviceContext\": {\n    \"service\": \"<string>\",\n    \"version\": \"<string>\",\n    \"resourceType\": \"<string>\"\n  },\n  \"message\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"context\": {\n    \"httpRequest\": {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"userAgent\": \"<string>\",\n      \"referrer\": \"<string>\",\n      \"responseStatusCode\": \"<integer>\",\n      \"remoteIp\": \"<string>\"\n    },\n    \"user\": \"<string>\",\n    \"reportLocation\": {\n      \"filePath\": \"<string>\",\n      \"lineNumber\": \"<integer>\",\n      \"functionName\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta1/projects/:projectId/events:report",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta1",
+                                "projects",
+                                ":projectId",
+                                "events:report"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T01:47:32.000Z",
+                          "updatedAt": "2026-07-28T01:47:32.000Z",
+                          "uid": "35240-1e55797e-4e0f-426c-9ed9-a07755746e11"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:47:32.000Z",
+                      "updatedAt": "2026-07-28T01:47:32.000Z",
+                      "uid": "35240-59eb2e7e-0768-483b-a12a-9d66094ca58a"
+                    }
+                  ],
+                  "id": "e8236ba6-4102-458f-b429-7e47a1e07a8b",
+                  "createdAt": "2026-07-28T01:47:32.000Z",
+                  "updatedAt": "2026-07-28T01:47:32.000Z",
+                  "uid": "35240-e8236ba6-4102-458f-b429-7e47a1e07a8b"
+                },
+                {
+                  "name": "groupStats",
+                  "item": [
+                    {
+                      "name": "Google Cloud Error Reporting List Group Stats",
+                      "id": "488fbeed-420e-42e7-b14b-b8907d1bd898",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta1/projects/:projectId/groupStats?timeRange.period=PERIOD_1_DAY&pageSize=<integer>&pageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta1",
+                            "projects",
+                            ":projectId",
+                            "groupStats"
+                          ],
+                          "query": [
+                            {
+                              "key": "timeRange.period",
+                              "value": "PERIOD_1_DAY"
+                            },
+                            {
+                              "key": "pageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "pageToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "d947c62b-43ad-403a-84e7-e90133b9e0f3",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Lists the specified groups with error count statistics."
+                      },
+                      "response": [
+                        {
+                          "id": "6719927c-0ebf-4d7d-87e5-b656e342ed89",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta1/projects/:projectId/groupStats?timeRange.period=PERIOD_1_DAY&pageSize=<integer>&pageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta1",
+                                "projects",
+                                ":projectId",
+                                "groupStats"
+                              ],
+                              "query": [
+                                {
+                                  "key": "timeRange.period",
+                                  "value": "PERIOD_1_DAY"
+                                },
+                                {
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "pageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorGroupStats\": [\n    {\n      \"group\": {\n        \"name\": \"<string>\",\n        \"groupId\": \"<string>\",\n        \"trackingIssues\": [\n          {\n            \"url\": \"<string>\"\n          },\n          {\n            \"url\": \"<string>\"\n          }\n        ],\n        \"resolutionStatus\": \"MUTED\"\n      },\n      \"count\": \"<string>\",\n      \"affectedUsersCount\": \"<string>\",\n      \"firstSeenTime\": \"<dateTime>\",\n      \"lastSeenTime\": \"<dateTime>\",\n      \"affectedServices\": [\n        {\n          \"service\": \"<string>\",\n          \"version\": \"<string>\",\n          \"resourceType\": \"<string>\"\n        },\n        {\n          \"service\": \"<string>\",\n          \"version\": \"<string>\",\n          \"resourceType\": \"<string>\"\n        }\n      ],\n      \"numAffectedServices\": \"<integer>\",\n      \"representative\": {\n        \"eventTime\": \"<dateTime>\",\n        \"serviceContext\": {\n          \"service\": \"<string>\",\n          \"version\": \"<string>\",\n          \"resourceType\": \"<string>\"\n        },\n        \"message\": \"<string>\",\n        \"context\": {\n          \"httpRequest\": {\n            \"method\": \"<string>\",\n            \"url\": \"<string>\",\n            \"userAgent\": \"<string>\",\n            \"referrer\": \"<string>\",\n            \"responseStatusCode\": \"<integer>\",\n            \"remoteIp\": \"<string>\"\n          },\n          \"user\": \"<string>\",\n          \"reportLocation\": {\n            \"filePath\": \"<string>\",\n            \"lineNumber\": \"<integer>\",\n            \"functionName\": \"<string>\"\n          }\n        }\n      }\n    },\n    {\n      \"group\": {\n        \"name\": \"<string>\",\n        \"groupId\": \"<string>\",\n        \"trackingIssues\": [\n          {\n            \"url\": \"<string>\"\n          },\n          {\n            \"url\": \"<string>\"\n          }\n        ],\n        \"resolutionStatus\": \"ACKNOWLEDGED\"\n      },\n      \"count\": \"<string>\",\n      \"affectedUsersCount\": \"<string>\",\n      \"firstSeenTime\": \"<dateTime>\",\n      \"lastSeenTime\": \"<dateTime>\",\n      \"affectedServices\": [\n        {\n          \"service\": \"<string>\",\n          \"version\": \"<string>\",\n          \"resourceType\": \"<string>\"\n        },\n        {\n          \"service\": \"<string>\",\n          \"version\": \"<string>\",\n          \"resourceType\": \"<string>\"\n        }\n      ],\n      \"numAffectedServices\": \"<integer>\",\n      \"representative\": {\n        \"eventTime\": \"<dateTime>\",\n        \"serviceContext\": {\n          \"service\": \"<string>\",\n          \"version\": \"<string>\",\n          \"resourceType\": \"<string>\"\n        },\n        \"message\": \"<string>\",\n        \"context\": {\n          \"httpRequest\": {\n            \"method\": \"<string>\",\n            \"url\": \"<string>\",\n            \"userAgent\": \"<string>\",\n            \"referrer\": \"<string>\",\n            \"responseStatusCode\": \"<integer>\",\n            \"remoteIp\": \"<string>\"\n          },\n          \"user\": \"<string>\",\n          \"reportLocation\": {\n            \"filePath\": \"<string>\",\n            \"lineNumber\": \"<integer>\",\n            \"functionName\": \"<string>\"\n          }\n        }\n      }\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"timeRangeBegin\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T01:47:32.000Z",
+                          "updatedAt": "2026-07-28T01:47:32.000Z",
+                          "uid": "35240-6719927c-0ebf-4d7d-87e5-b656e342ed89"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:47:32.000Z",
+                      "updatedAt": "2026-07-28T01:47:32.000Z",
+                      "uid": "35240-488fbeed-420e-42e7-b14b-b8907d1bd898"
+                    }
+                  ],
+                  "id": "901b2d02-1434-4874-ba25-a1f01418f7d6",
+                  "createdAt": "2026-07-28T01:47:32.000Z",
+                  "updatedAt": "2026-07-28T01:47:32.000Z",
+                  "uid": "35240-901b2d02-1434-4874-ba25-a1f01418f7d6"
+                },
+                {
+                  "name": "groups",
+                  "item": [
+                    {
+                      "name": "{groupId}",
+                      "item": [
+                        {
+                          "name": "Google Cloud Error Reporting Get Error Group",
+                          "id": "df50cb59-407a-43a1-9c0a-85c516f85d48",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta1/projects/:projectId/groups/:groupId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta1",
+                                "projects",
+                                ":projectId",
+                                "groups",
+                                ":groupId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "33148dd1-34d0-4aab-8365-780c6bcb707f",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "40804c75-45a8-4069-aaf5-81196d3f54f9",
+                                  "key": "groupId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Gets the specified error group."
+                          },
+                          "response": [
+                            {
+                              "id": "311e49f4-76ce-480e-b35d-09b447f81cf4",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta1/projects/:projectId/groups/:groupId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta1",
+                                    "projects",
+                                    ":projectId",
+                                    "groups",
+                                    ":groupId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "groupId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"name\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"trackingIssues\": [\n    {\n      \"url\": \"<string>\"\n    },\n    {\n      \"url\": \"<string>\"\n    }\n  ],\n  \"resolutionStatus\": \"RESOLVED\"\n}",
+                              "createdAt": "2026-07-28T01:47:32.000Z",
+                              "updatedAt": "2026-07-28T01:47:32.000Z",
+                              "uid": "35240-311e49f4-76ce-480e-b35d-09b447f81cf4"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:47:32.000Z",
+                          "updatedAt": "2026-07-28T01:47:32.000Z",
+                          "uid": "35240-df50cb59-407a-43a1-9c0a-85c516f85d48"
+                        },
+                        {
+                          "name": "Google Cloud Error Reporting Update Error Group",
+                          "id": "d1a3941d-106d-4871-8b77-691f8a66bcb3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"trackingIssues\": [\n    {\n      \"url\": \"<string>\"\n    },\n    {\n      \"url\": \"<string>\"\n    }\n  ],\n  \"resolutionStatus\": \"RESOLVED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta1/projects/:projectId/groups/:groupId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta1",
+                                "projects",
+                                ":projectId",
+                                "groups",
+                                ":groupId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5473ad73-e6b8-4486-b090-5181b2c0ba75",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "5878b372-d88c-4a91-8586-0d9b64885c23",
+                                  "key": "groupId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Replaces the data for the specified group."
+                          },
+                          "response": [
+                            {
+                              "id": "0d6b6305-d977-482a-9a6f-7577455be8fe",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"trackingIssues\": [\n    {\n      \"url\": \"<string>\"\n    },\n    {\n      \"url\": \"<string>\"\n    }\n  ],\n  \"resolutionStatus\": \"RESOLVED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta1/projects/:projectId/groups/:groupId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta1",
+                                    "projects",
+                                    ":projectId",
+                                    "groups",
+                                    ":groupId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "groupId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"name\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"trackingIssues\": [\n    {\n      \"url\": \"<string>\"\n    },\n    {\n      \"url\": \"<string>\"\n    }\n  ],\n  \"resolutionStatus\": \"RESOLVED\"\n}",
+                              "createdAt": "2026-07-28T01:47:32.000Z",
+                              "updatedAt": "2026-07-28T01:47:32.000Z",
+                              "uid": "35240-0d6b6305-d977-482a-9a6f-7577455be8fe"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:47:32.000Z",
+                          "updatedAt": "2026-07-28T01:47:32.000Z",
+                          "uid": "35240-d1a3941d-106d-4871-8b77-691f8a66bcb3"
+                        }
+                      ],
+                      "id": "cb7345e7-f042-422e-93d9-b8c242ddee50",
+                      "createdAt": "2026-07-28T01:47:32.000Z",
+                      "updatedAt": "2026-07-28T01:47:32.000Z",
+                      "uid": "35240-cb7345e7-f042-422e-93d9-b8c242ddee50"
+                    }
+                  ],
+                  "id": "4755451e-89b9-4561-80a7-d7f7fca077e9",
+                  "createdAt": "2026-07-28T01:47:32.000Z",
+                  "updatedAt": "2026-07-28T01:47:32.000Z",
+                  "uid": "35240-4755451e-89b9-4561-80a7-d7f7fca077e9"
+                },
+                {
+                  "name": "events:deleteAll",
+                  "item": [
+                    {
+                      "name": "Google Cloud Error Reporting Delete All Events",
+                      "id": "604987bc-9e8b-428f-801f-89327a7fa14d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta1/projects/:projectId/events:deleteAll",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta1",
+                            "projects",
+                            ":projectId",
+                            "events:deleteAll"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d96ca69d-4bf6-4173-821d-a9695d9f0ecd",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Deletes all error events for the specified project."
+                      },
+                      "response": [
+                        {
+                          "id": "ed142674-5d3e-4385-8aac-b3f49c01d516",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta1/projects/:projectId/events:deleteAll",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta1",
+                                "projects",
+                                ":projectId",
+                                "events:deleteAll"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:47:32.000Z",
+                          "updatedAt": "2026-07-28T01:47:32.000Z",
+                          "uid": "35240-ed142674-5d3e-4385-8aac-b3f49c01d516"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:47:32.000Z",
+                      "updatedAt": "2026-07-28T01:47:32.000Z",
+                      "uid": "35240-604987bc-9e8b-428f-801f-89327a7fa14d"
+                    }
+                  ],
+                  "id": "e28b7c32-8ce3-482a-8194-02676ca08773",
+                  "createdAt": "2026-07-28T01:47:32.000Z",
+                  "updatedAt": "2026-07-28T01:47:32.000Z",
+                  "uid": "35240-e28b7c32-8ce3-482a-8194-02676ca08773"
+                }
+              ],
+              "id": "1720c40d-5712-44a7-aa0d-11a68899fcbe",
+              "createdAt": "2026-07-28T01:47:32.000Z",
+              "updatedAt": "2026-07-28T01:47:32.000Z",
+              "uid": "35240-1720c40d-5712-44a7-aa0d-11a68899fcbe"
+            }
+          ],
+          "id": "003d8574-8641-401c-8539-6b6e2d3e725b",
+          "createdAt": "2026-07-28T01:47:32.000Z",
+          "updatedAt": "2026-07-28T01:47:32.000Z",
+          "uid": "35240-003d8574-8641-401c-8539-6b6e2d3e725b"
+        }
+      ],
+      "id": "f51cc0a2-ac36-43d8-8466-5bc4ee45d146",
+      "createdAt": "2026-07-28T01:47:32.000Z",
+      "updatedAt": "2026-07-28T01:47:32.000Z",
+      "uid": "35240-f51cc0a2-ac36-43d8-8466-5bc4ee45d146"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://clouderrorreporting.googleapis.com"
+    }
+  ]
+}
