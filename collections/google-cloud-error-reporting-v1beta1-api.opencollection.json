@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Error Reporting V1beta1 API",
+    "version": "v1beta1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "V1beta1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Error Reporting List Error Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clouderrorreporting.googleapis.com/v1beta1/projects/:projectId/events",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "query",
+                "description": "The group for which events are returned."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the specified events."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Error Reporting Report Error Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clouderrorreporting.googleapis.com/v1beta1/projects/:projectId/events:report",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reports an individual error event."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Error Reporting List Group Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clouderrorreporting.googleapis.com/v1beta1/projects/:projectId/groupStats",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "timeRange.period",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the specified groups with error count statistics."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Error Reporting Get Error Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clouderrorreporting.googleapis.com/v1beta1/projects/:projectId/groups/:groupId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets the specified error group."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Error Reporting Update Error Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://clouderrorreporting.googleapis.com/v1beta1/projects/:projectId/groups/:groupId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces the data for the specified group."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Error Reporting Delete All Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clouderrorreporting.googleapis.com/v1beta1/projects/:projectId/events:deleteAll",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes all error events for the specified project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
