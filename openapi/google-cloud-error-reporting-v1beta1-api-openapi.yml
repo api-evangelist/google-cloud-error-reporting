@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Google Cloud Error Reporting V1beta1 API
   description: The Error Reporting API enables listing error events, retrieving error group statistics, reporting new errors, and managing error groups. It groups and counts similar errors from cloud services and applications and provides programmatic access to error data and statistics.
@@ -182,55 +182,6 @@ paths:
       - V1beta1
 components:
   schemas:
-    ReportErrorEventResponse:
-      type: object
-      description: Response for reporting an error event.
-    ErrorGroup:
-      type: object
-      description: A group of related error events.
-      properties:
-        name:
-          type: string
-        groupId:
-          type: string
-        trackingIssues:
-          type: array
-          items:
-            type: object
-            properties:
-              url:
-                type: string
-        resolutionStatus:
-          type: string
-          enum:
-          - OPEN
-          - ACKNOWLEDGED
-          - RESOLVED
-          - MUTED
-    ListEventsResponse:
-      type: object
-      properties:
-        errorEvents:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorEvent'
-        nextPageToken:
-          type: string
-        timeRangeBegin:
-          type: string
-          format: date-time
-    ListGroupStatsResponse:
-      type: object
-      properties:
-        errorGroupStats:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorGroupStats'
-        nextPageToken:
-          type: string
-        timeRangeBegin:
-          type: string
-          format: date-time
     ErrorContext:
       type: object
       description: Contextual information about the error.
@@ -262,19 +213,6 @@ components:
               type: integer
             functionName:
               type: string
-    ServiceContext:
-      type: object
-      description: Describes a running service that sends error reports.
-      properties:
-        service:
-          type: string
-          description: The name of the service.
-        version:
-          type: string
-          description: The version of the service.
-        resourceType:
-          type: string
-          description: Type of the resource reporting the error.
     ErrorGroupStats:
       type: object
       description: Statistics for an error group.
@@ -300,21 +238,31 @@ components:
           type: integer
         representative:
           $ref: '#/components/schemas/ErrorEvent'
-    ErrorEvent:
+    ReportErrorEventResponse:
       type: object
-      description: An individual error event.
+      description: Response for reporting an error event.
+    ErrorGroup:
+      type: object
+      description: A group of related error events.
       properties:
-        eventTime:
+        name:
           type: string
-          format: date-time
-          description: The time the event was received.
-        serviceContext:
-          $ref: '#/components/schemas/ServiceContext'
-        message:
+        groupId:
           type: string
-          description: The error message and stack trace.
-        context:
-          $ref: '#/components/schemas/ErrorContext'
+        trackingIssues:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+        resolutionStatus:
+          type: string
+          enum:
+          - OPEN
+          - ACKNOWLEDGED
+          - RESOLVED
+          - MUTED
     ReportedErrorEvent:
       type: object
       description: An error event reported by the application.
@@ -332,6 +280,58 @@ components:
       required:
       - serviceContext
       - message
+    ListEventsResponse:
+      type: object
+      properties:
+        errorEvents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorEvent'
+        nextPageToken:
+          type: string
+        timeRangeBegin:
+          type: string
+          format: date-time
+    ListGroupStatsResponse:
+      type: object
+      properties:
+        errorGroupStats:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorGroupStats'
+        nextPageToken:
+          type: string
+        timeRangeBegin:
+          type: string
+          format: date-time
+    ServiceContext:
+      type: object
+      description: Describes a running service that sends error reports.
+      properties:
+        service:
+          type: string
+          description: The name of the service.
+        version:
+          type: string
+          description: The version of the service.
+        resourceType:
+          type: string
+          description: Type of the resource reporting the error.
+    ErrorEvent:
+      type: object
+      description: An individual error event.
+      properties:
+        eventTime:
+          type: string
+          format: date-time
+          description: The time the event was received.
+        serviceContext:
+          $ref: '#/components/schemas/ServiceContext'
+        message:
+          type: string
+          description: The error message and stack trace.
+        context:
+          $ref: '#/components/schemas/ErrorContext'
 externalDocs:
   description: Google Cloud Error Reporting Documentation
   url: https://cloud.google.com/error-reporting/docs
