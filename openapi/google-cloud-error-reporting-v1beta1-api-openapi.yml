@@ -182,31 +182,45 @@ paths:
       - V1beta1
 components:
   schemas:
-    ServiceContext:
+    ReportedErrorEvent:
       type: object
-      description: Describes a running service that sends error reports.
+      description: An error event reported by the application.
       properties:
-        service:
-          type: string
-          description: The name of the service.
-        version:
-          type: string
-          description: The version of the service.
-        resourceType:
-          type: string
-          description: Type of the resource reporting the error.
-    ListEventsResponse:
-      type: object
-      properties:
-        errorEvents:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorEvent'
-        nextPageToken:
-          type: string
-        timeRangeBegin:
+        eventTime:
           type: string
           format: date-time
+        serviceContext:
+          $ref: '#/components/schemas/ServiceContext'
+        message:
+          type: string
+          description: The error message including stack trace.
+        context:
+          $ref: '#/components/schemas/ErrorContext'
+      required:
+      - serviceContext
+      - message
+    ErrorGroup:
+      type: object
+      description: A group of related error events.
+      properties:
+        name:
+          type: string
+        groupId:
+          type: string
+        trackingIssues:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+        resolutionStatus:
+          type: string
+          enum:
+          - OPEN
+          - ACKNOWLEDGED
+          - RESOLVED
+          - MUTED
     ErrorGroupStats:
       type: object
       description: Statistics for an error group.
@@ -232,46 +246,19 @@ components:
           type: integer
         representative:
           $ref: '#/components/schemas/ErrorEvent'
-    ReportErrorEventResponse:
+    ServiceContext:
       type: object
-      description: Response for reporting an error event.
-    ErrorEvent:
-      type: object
-      description: An individual error event.
+      description: Describes a running service that sends error reports.
       properties:
-        eventTime:
+        service:
           type: string
-          format: date-time
-          description: The time the event was received.
-        serviceContext:
-          $ref: '#/components/schemas/ServiceContext'
-        message:
+          description: The name of the service.
+        version:
           type: string
-          description: The error message and stack trace.
-        context:
-          $ref: '#/components/schemas/ErrorContext'
-    ErrorGroup:
-      type: object
-      description: A group of related error events.
-      properties:
-        name:
+          description: The version of the service.
+        resourceType:
           type: string
-        groupId:
-          type: string
-        trackingIssues:
-          type: array
-          items:
-            type: object
-            properties:
-              url:
-                type: string
-        resolutionStatus:
-          type: string
-          enum:
-          - OPEN
-          - ACKNOWLEDGED
-          - RESOLVED
-          - MUTED
+          description: Type of the resource reporting the error.
     ErrorContext:
       type: object
       description: Contextual information about the error.
@@ -315,23 +302,36 @@ components:
         timeRangeBegin:
           type: string
           format: date-time
-    ReportedErrorEvent:
+    ReportErrorEventResponse:
       type: object
-      description: An error event reported by the application.
+      description: Response for reporting an error event.
+    ErrorEvent:
+      type: object
+      description: An individual error event.
       properties:
         eventTime:
           type: string
           format: date-time
+          description: The time the event was received.
         serviceContext:
           $ref: '#/components/schemas/ServiceContext'
         message:
           type: string
-          description: The error message including stack trace.
+          description: The error message and stack trace.
         context:
           $ref: '#/components/schemas/ErrorContext'
-      required:
-      - serviceContext
-      - message
+    ListEventsResponse:
+      type: object
+      properties:
+        errorEvents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorEvent'
+        nextPageToken:
+          type: string
+        timeRangeBegin:
+          type: string
+          format: date-time
 externalDocs:
   description: Google Cloud Error Reporting Documentation
   url: https://cloud.google.com/error-reporting/docs
