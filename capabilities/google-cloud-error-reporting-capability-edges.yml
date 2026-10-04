@@ -1,0 +1,27 @@
+slug: google-cloud-error-reporting
+provider: Google Cloud Error Reporting
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: V1beta1
+  spec_file: google-cloud-error-reporting-v1beta1-api-openapi.yml
+  capability_id: BC-4220.20
+  capability_id_l1: BC-4220
+  capability_name: Observability Management
+  confidence: 0.72
+  evidence: '"List Error Events", "Report Error Event", "List Group Stats" — "groups and counts similar
+    errors from cloud services and applications"'
+  reason: The operations ingest and aggregate runtime error telemetry from production services and expose
+    statistics for reliability triage, which is observability of a running service rather than a business-domain
+    capability. Observability Management is the closest fit; an alternative reading as IT Operations Monitoring
+    (BC-600.40) keeps confidence moderate.

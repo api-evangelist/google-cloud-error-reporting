@@ -65,6 +65,9 @@ apis:
   - type: JSONLDContext
     url: json-ld/json-ld.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/google-cloud-error-reporting-capability-edges.yml
+    name: Google Cloud Error Reporting Business Capability Map
   - type: Website
     url: https://www.google.com/
   - type: PostmanWorkspace
