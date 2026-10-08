@@ -65,6 +65,12 @@ apis:
   - type: JSONLDContext
     url: json-ld/json-ld.yml
 common:
+  - type: Plans
+    url: plans/google-cloud-error-reporting-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/google-cloud-error-reporting-rate-limits.yml
+  - type: FinOps
+    url: finops/google-cloud-error-reporting-finops.yml
   - type: CapabilityMap
     url: capabilities/google-cloud-error-reporting-capability-edges.yml
     name: Google Cloud Error Reporting Business Capability Map
